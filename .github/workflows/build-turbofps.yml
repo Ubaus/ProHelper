@@ -4,12 +4,12 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'turbofps_parts/**'
+      - 'turbofps_good_parts/**'
       - '.github/workflows/build-turbofps.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'turbofps_parts/**'
+      - 'turbofps_good_parts/**'
       - '.github/workflows/build-turbofps.yml'
   workflow_dispatch:
 
@@ -30,7 +30,7 @@ jobs:
 
       - name: Reconstruct source archive
         run: |
-          cat turbofps_parts/00 turbofps_parts/01 | base64 --decode > /tmp/turbofps.zip
+          cat turbofps_good_parts/00 turbofps_good_parts/01 turbofps_good_parts/02 turbofps_good_parts/03 | base64 --decode > /tmp/turbofps.zip
           unzip -t /tmp/turbofps.zip
           rm -rf build-src
           mkdir build-src
