@@ -35,6 +35,7 @@ jobs:
           rm -rf build-src
           mkdir build-src
           unzip -q /tmp/turbofps.zip -d build-src
+          sed -i 's/protected void init()/public void init()/g' build-src/src/client/java/com/daniel/turbofps/client/screen/TurboVideoSettingsScreen.java
 
       - name: Build Fabric mod
         working-directory: build-src
