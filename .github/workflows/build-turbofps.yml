@@ -61,3 +61,5 @@ jobs:
           path: |
             dist/turbofps-1.0.0.jar
             dist/turbofps-1.0.0.jar.sha256
+
+# Trigger build after workflow installation.
