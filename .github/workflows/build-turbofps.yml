@@ -6,6 +6,11 @@ on:
     paths:
       - 'turbofps_parts/**'
       - '.github/workflows/build-turbofps.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'turbofps_parts/**'
+      - '.github/workflows/build-turbofps.yml'
   workflow_dispatch:
 
 permissions:
@@ -46,6 +51,7 @@ jobs:
           sha256sum dist/turbofps-1.0.0.jar > dist/turbofps-1.0.0.jar.sha256
 
       - name: Commit compiled JAR
+        if: github.event_name == 'push'
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
@@ -61,5 +67,3 @@ jobs:
           path: |
             dist/turbofps-1.0.0.jar
             dist/turbofps-1.0.0.jar.sha256
-
-# Trigger build after workflow installation.
